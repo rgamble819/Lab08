@@ -11,24 +11,29 @@ public enum GamePiece
         this.gpa = gpa;
         this.priority = priority;
     }
-
-    public GamePieceAppearance getGpa()
-    {
-        return gpa;
-    }
-
+    
     public int getPriority()
     {
         return priority;
     }
     
-    public GamePiece movesFirst(GamePiece a, GamePiece b) 
+    public static GamePiece movesFirst(GamePiece a, GamePiece b) 
     {
         if(a.getPriority() > b.getPriority()) 
         {
             return b;
         }
         return a;
+    }
+    
+    public Color getColor()
+    {
+        return gpa.getColor();
+    }
+
+    public Shape getShape()
+    {
+        return gpa.getShape();
     }
     
     public String toString() 

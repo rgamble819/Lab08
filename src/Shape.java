@@ -5,6 +5,6 @@ public enum Shape
     
     public String toString() 
     {
-        return name();
+        return name().toLowerCase();
     }
 }
