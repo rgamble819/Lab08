@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -136,7 +138,7 @@ public class BoardGameTest
         bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
         
         Assert.assertEquals("Incorrect location", 3, bg.getPlayerLocations().size());
-        Assert.assertEquals("Incorrect location", Location.CONSERVATORY, bg.getPlayerLocations().stream().findFirst().get());
+        Assert.assertEquals("Incorrect location", true, bg.getPlayerLocations().contains(Location.CONSERVATORY));
     }
     
     @Test
