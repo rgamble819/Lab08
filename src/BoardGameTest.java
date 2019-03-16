@@ -36,6 +36,8 @@ public class BoardGameTest
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
         
         Assert.assertEquals("Incorrect player returned", "Ryan", bg.getPlayerWithGamePiece(GamePiece.BLUE_BOOT));    
+        Assert.assertEquals("Incorrect player returned", null, bg.getPlayerWithGamePiece(GamePiece.YELLOW_BOOT));    
+
     }
     
     @Test
@@ -60,11 +62,15 @@ public class BoardGameTest
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
         bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.RED_RACECAR, Location.BILLIARD_ROOM);
         
-        bg.moveTwoPlayers(players, locs);
+        String[] players2 = {"Gill", "Ryan"};
         
-        Assert.assertEquals("Incorrect location", Location.DINING_ROOM, bg.playerLocation.get("Ryan"));
-        Assert.assertEquals("Incorrect location", Location.STUDY, bg.playerLocation.get("Jonathan"));
+        bg.movePlayer("Ryan", Location.BILLIARD_ROOM);
+
+        Assert.assertArrayEquals(new String[] {"Jonathan", "Ryan"}, bg.moveTwoPlayers(players, locs));
+        Assert.assertArrayEquals(new String[] {"Gill", "Ryan"}, bg.moveTwoPlayers(players2, locs));
+
     }
     
     @Test
@@ -76,7 +82,7 @@ public class BoardGameTest
         
         bg.movePlayer("Ryan", Location.BILLIARD_ROOM);
         
-        Assert.assertEquals("Incorrect location", bg.playerLocation.get("Ryan"), bg.getPlayerLocation("Ryan"));
+        Assert.assertEquals("Incorrect location", bg.playerLocation.get("Ryan"), bg.getPlayersLocation("Ryan"));
     }
     
     @Test
@@ -151,7 +157,7 @@ public class BoardGameTest
         bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
         
         Assert.assertEquals("Incorrect location", 3, bg.getPlayerPieces().size());
-        Assert.assertEquals("Incorrect location", GamePiece.BLUE_RACECAR, bg.getPlayerPieces().stream().findFirst().get());
+        Assert.assertEquals("Incorrect location", true, bg.getPlayerPieces().contains(GamePiece.BLUE_RACECAR));
     
     }
 }

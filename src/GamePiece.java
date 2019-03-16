@@ -6,36 +6,53 @@ public enum GamePiece
     private GamePieceAppearance gpa;
     private int priority;
     
+    /**
+     * 
+     * @param gpa
+     * @param priority
+     */
     private GamePiece(GamePieceAppearance gpa, int priority) 
     {
         this.gpa = gpa;
         this.priority = priority;
     }
     
-    public int getPriority()
-    {
-        return priority;
-    }
-    
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return GamePiece - Given two game pieces, determines which one takes its turn first.
+     */
     public static GamePiece movesFirst(GamePiece a, GamePiece b) 
     {
-        if(a.getPriority() > b.getPriority()) 
+        if(a.priority> b.priority) 
         {
             return b;
         }
         return a;
     }
     
+    /**
+     * 
+     * @return Color - Gets the color of the game piece.
+     */
     public Color getColor()
     {
         return gpa.getColor();
     }
 
+    /**
+     * 
+     * @return Shape - Gets the color of the game piece.
+     */
     public Shape getShape()
     {
         return gpa.getShape();
     }
     
+    /**
+     * @return String - Gets information about the game piece.
+     */
     public String toString() 
     {
         return String.format("%s: a %s %s with priority %d", 

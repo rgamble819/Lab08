@@ -29,12 +29,6 @@ public class ColorShapeAndGamePieceTest
     }
     
     @Test
-    public void getPriorityGPTest() 
-    {
-        Assert.assertEquals("Incorrect priority : GamePiece", 0, GamePiece.RED_RACECAR.getPriority()); 
-    }
-    
-    @Test
     public void getColorGPTest() 
     {
         Assert.assertEquals("Incorrect Color : GamePiece", Color.RED, GamePiece.RED_RACECAR.getColor());
