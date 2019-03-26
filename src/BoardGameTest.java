@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,7 +47,7 @@ public class BoardGameTest
         
         bg.movePlayer("Ryan", Location.BILLIARD_ROOM);
         
-        Assert.assertEquals("Incorrect location", Location.BILLIARD_ROOM, bg.playerLocation.get("Ryan"));
+        Assert.assertEquals("Incorrect location", Location.BILLIARD_ROOM, bg.playerLocations.get("Ryan"));
     }
     
     @Test
@@ -61,8 +59,8 @@ public class BoardGameTest
         BoardGame bg = new BoardGame();
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
-        bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
-        bg.addPlayer("Gill", GamePiece.RED_RACECAR, Location.BILLIARD_ROOM);
+        bg.addPlayer("Jonathan", GamePiece.BLUE_RACER, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.RED_RACER, Location.BILLIARD_ROOM);
         
         String[] players2 = {"Gill", "Ryan"};
         
@@ -82,7 +80,7 @@ public class BoardGameTest
         
         bg.movePlayer("Ryan", Location.BILLIARD_ROOM);
         
-        Assert.assertEquals("Incorrect location", bg.playerLocation.get("Ryan"), bg.getPlayersLocation("Ryan"));
+        Assert.assertEquals("Incorrect location", bg.playerLocations.get("Ryan"), bg.getPlayersLocation("Ryan"));
     }
     
     @Test
@@ -94,8 +92,8 @@ public class BoardGameTest
         BoardGame bg = new BoardGame();
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
-        bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
-        bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
+        bg.addPlayer("Jonathan", GamePiece.BLUE_RACER, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.MAGENTA_RACER, Location.CONSERVATORY);
         
         bg.moveTwoPlayers(players, locs);
         
@@ -112,13 +110,13 @@ public class BoardGameTest
         BoardGame bg = new BoardGame();
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
-        bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
-        bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
+        bg.addPlayer("Jonathan", GamePiece.BLUE_RACER, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.MAGENTA_RACER, Location.CONSERVATORY);
         
         bg.moveTwoPlayers(players, locs);
         
         Assert.assertEquals("Incorrect pieces", GamePiece.BLUE_BOOT, bg.getGamePiecesAtLocation(Location.STUDY).get(0));
-        Assert.assertEquals("Incorrect pieces", GamePiece.BLUE_RACECAR, bg.getGamePiecesAtLocation(Location.STUDY).get(1));
+        Assert.assertEquals("Incorrect pieces", GamePiece.BLUE_RACER, bg.getGamePiecesAtLocation(Location.STUDY).get(1));
     }
     
     @Test
@@ -127,8 +125,8 @@ public class BoardGameTest
         BoardGame bg = new BoardGame();
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
-        bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
-        bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
+        bg.addPlayer("Jonathan", GamePiece.BLUE_RACER, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.MAGENTA_RACER, Location.CONSERVATORY);
         
         Assert.assertEquals("Incorrect location", 3, bg.getPlayers().size());
         Assert.assertEquals("Incorrect location", "Ryan", bg.getPlayers().stream().findFirst().get());
@@ -140,8 +138,8 @@ public class BoardGameTest
         BoardGame bg = new BoardGame();
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
-        bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
-        bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
+        bg.addPlayer("Jonathan", GamePiece.BLUE_RACER, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.MAGENTA_RACER, Location.CONSERVATORY);
         
         Assert.assertEquals("Incorrect location", 3, bg.getPlayerLocations().size());
         Assert.assertEquals("Incorrect location", true, bg.getPlayerLocations().contains(Location.CONSERVATORY));
@@ -153,11 +151,11 @@ public class BoardGameTest
         BoardGame bg = new BoardGame();
         
         bg.addPlayer("Ryan", GamePiece.BLUE_BOOT, Location.BALLROOM);
-        bg.addPlayer("Jonathan", GamePiece.BLUE_RACECAR, Location.BILLIARD_ROOM);
-        bg.addPlayer("Gill", GamePiece.MAGENTA_RACECAR, Location.CONSERVATORY);
+        bg.addPlayer("Jonathan", GamePiece.BLUE_RACER, Location.BILLIARD_ROOM);
+        bg.addPlayer("Gill", GamePiece.MAGENTA_RACER, Location.CONSERVATORY);
         
         Assert.assertEquals("Incorrect location", 3, bg.getPlayerPieces().size());
-        Assert.assertEquals("Incorrect location", true, bg.getPlayerPieces().contains(GamePiece.BLUE_RACECAR));
+        Assert.assertEquals("Incorrect location", true, bg.getPlayerPieces().contains(GamePiece.BLUE_RACER));
     
     }
 }

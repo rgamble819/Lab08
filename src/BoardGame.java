@@ -8,14 +8,13 @@ import java.util.Set;
 public class BoardGame
 {
     protected LinkedHashMap<String, GamePiece> playerPieces;
-    protected LinkedHashMap<String, Location> playerLocation;
+    protected LinkedHashMap<String, Location> playerLocations;
     
     // Constructs and initializes board game object
     public BoardGame() 
     {
         playerPieces = new LinkedHashMap<String, GamePiece>();
-        playerLocation = new LinkedHashMap<String, Location>();
-
+        playerLocations = new LinkedHashMap<String, Location>();
     }
     
     /**
@@ -29,7 +28,7 @@ public class BoardGame
     {
         if(!playerPieces.containsValue(gamePiece)) {
             playerPieces.put(playerName, gamePiece);
-            playerLocation.put(playerName, initialLocation);
+            playerLocations.put(playerName, initialLocation);
             return true;
         }
         else 
@@ -69,7 +68,7 @@ public class BoardGame
      */
     public void movePlayer(String playerName, Location newLocation) 
     {
-        playerLocation.put(playerName, newLocation);
+        playerLocations.put(playerName, newLocation);
     }
     
     /**
@@ -111,12 +110,12 @@ public class BoardGame
      */
     public Location getPlayersLocation(String playerName) 
     {
-        return playerLocation.get(playerName);
+        return playerLocations.get(playerName);
     }
     
     public ArrayList<String> getPlayersAtLocation(Location loc) 
     {
-        Map<String, Location> map = playerLocation;
+        Map<String, Location> map = playerLocations;
         ArrayList<String> players = new ArrayList<String>();
         
         for(Entry<String, Location> m : map.entrySet()) 
@@ -136,7 +135,7 @@ public class BoardGame
      */
     public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc)
     {
-        Map<String, Location> mapPieces = playerLocation;
+        Map<String, Location> mapPieces = playerLocations;
         ArrayList<GamePiece> players = new ArrayList<GamePiece>();
         
         for(Entry<String, Location> m : mapPieces.entrySet()) 
@@ -164,7 +163,7 @@ public class BoardGame
      */
     public Set<Location> getPlayerLocations() 
     {
-        return new HashSet<Location>(playerLocation.values());
+        return new HashSet<Location>(playerLocations.values());
     }
     
     /**
